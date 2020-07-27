@@ -2,9 +2,14 @@ package com.example.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,7 +23,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.project.adapter.KhachHangAdapter;
 import com.example.project.modle.KhachHang;
+import com.example.project.ultil.Check_Internet_Wifi;
 import com.example.project.ultil.Server;
+import com.example.project.ultil.TuongTacServer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +57,66 @@ public class KhachHangActivity extends AppCompatActivity {
             }
         });
         HienThiDanhSachKhachHang();
+        imgAddKhachHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xuLyThemKhachHang();
+            }
+        });
     }
+
+
+    private void xuLyThemKhachHang() {
+        final Dialog dialog = new Dialog(KhachHangActivity.this);
+        //không cho tắt hộp thoại đi khi click ra ngoài hộp thoại
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.themkhachhang);
+        final EditText txtNhapMaKH = (EditText)dialog.findViewById(R.id.txtNhapMaKH);
+        final EditText txtNhapTenKH = (EditText)dialog.findViewById(R.id.txtNhapTenKH);
+        final EditText txtNhapNgaySinh = (EditText)dialog.findViewById(R.id.txtNhapNgaySinh);
+        final EditText txtNhapEmail = (EditText)dialog.findViewById(R.id.txtNhapEmail);
+        final EditText txtNhapDiaChi = (EditText)dialog.findViewById(R.id.txtNhapDiaChi);
+        final EditText txtNhapSDT = (EditText)dialog.findViewById(R.id.txtNhapSDT);
+        final EditText txtNhapMaThe = (EditText)dialog.findViewById(R.id.txtNhapMaThe);
+        Button btnThemKH = (Button)dialog.findViewById(R.id.btnThemKH);
+
+        //Dữ liệu trong key
+        final ArrayList<String> key = new ArrayList<String>();
+        key.add("maKH");
+        key.add("tenKH");
+        key.add("ngaySinh");
+        key.add("email");
+        key.add("diaChi");
+        key.add("sdt");
+        key.add("maThe");
+
+        btnThemKH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Dữ liệu trong value
+                final ArrayList<String> value = new ArrayList<String>();
+                value.add(txtNhapMaKH.getText().toString());
+                value.add(txtNhapTenKH.getText().toString());
+                value.add(txtNhapNgaySinh.getText().toString());
+                value.add(txtNhapEmail.getText().toString());
+                value.add(txtNhapDiaChi.getText().toString());
+                value.add(txtNhapSDT.getText().toString());
+                value.add(txtNhapMaThe.getText().toString());
+                dsKhachHang.add(new KhachHang(txtNhapMaKH.getText().toString(),
+                                              txtNhapTenKH.getText().toString(),
+                                              txtNhapNgaySinh.getText().toString(),
+                                              txtNhapEmail.getText().toString(),
+                                              txtNhapDiaChi.getText().toString(),
+                                              txtNhapSDT.getText().toString(),
+                                              txtNhapMaThe.getText().toString()));
+                khachHangAdapter.notifyDataSetChanged();
+                TuongTacServer.insert_Or_update(KhachHangActivity.this,Server.urlThemKhachHang,key, value);
+                dialog.cancel();
+            }
+        });
+        dialog.show();
+    }
+
 
     private void HienThiDanhSachKhachHang() {
         RequestQueue queue = Volley.newRequestQueue(this);

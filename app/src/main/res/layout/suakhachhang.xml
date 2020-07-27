@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/txtNhapMaKH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Mã khách hàng"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapTenKH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Tên khách hàng"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapNgaySinh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ngày sinh"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapDiaChi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Địa chỉ"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapSDT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Số điện thoại"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapMaThe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Mã thẻ"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+
+    <Button
+        android:id="@+id/btnSuaKH"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sửa khách hàng" />
+</LinearLayout>

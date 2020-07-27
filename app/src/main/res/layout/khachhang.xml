@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Mã Khách hàng"
-            android:textColor="#D8D3D3"
+            android:textColor="#323131"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="#323131"
             android:text="TextView" />
 
 
@@ -51,7 +52,7 @@
                 android:gravity="center"
                 android:text="Tên Khách hàng"
                 android:textSize="20dp"
-                android:textColor="#D8D3D3"
+                android:textColor="#323131"
                 android:textStyle="bold" />
 
             <TextView
@@ -59,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#323131"
                 android:text="TextView" />
         </LinearLayout>
 
@@ -75,7 +76,7 @@
                 android:gravity="center"
                 android:text="Ngày sinh"
                 android:textSize="20dp"
-                android:textColor="#D8D3D3"
+                android:textColor="#323131"
                 android:textStyle="bold" />
 
             <TextView
@@ -83,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#323131"
                 android:text="TextView" />
         </LinearLayout>
     </LinearLayout>
@@ -106,7 +107,7 @@
                 android:gravity="center"
                 android:text="Email"
                 android:textSize="20dp"
-                android:textColor="#D8D3D3"
+                android:textColor="#323131"
                 android:textStyle="bold" />
 
             <TextView
@@ -114,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#323131"
                 android:text="TextView" />
         </LinearLayout>
 
@@ -130,7 +131,7 @@
                 android:gravity="center"
                 android:text="Địa chỉ"
                 android:textSize="20dp"
-                android:textColor="#D8D3D3"
+                android:textColor="#323131"
                 android:textStyle="bold" />
 
             <TextView
@@ -138,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#323131"
                 android:text="TextView" />
         </LinearLayout>
     </LinearLayout>
@@ -160,7 +161,7 @@
                 android:gravity="center"
                 android:text="Số điện thoại"
                 android:textSize="20dp"
-                android:textColor="#D8D3D3"
+                android:textColor="#323131"
                 android:textStyle="bold" />
 
             <TextView
@@ -168,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#323131"
                 android:text="TextView" />
         </LinearLayout>
 
@@ -184,7 +185,7 @@
                 android:gravity="center"
                 android:text="Mã thẻ"
                 android:textSize="20dp"
-                android:textColor="#D8D3D3"
+                android:textColor="#323131"
                 android:textStyle="bold" />
 
             <TextView
@@ -192,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#323131"
                 android:text="TextView" />
         </LinearLayout>
     </LinearLayout>

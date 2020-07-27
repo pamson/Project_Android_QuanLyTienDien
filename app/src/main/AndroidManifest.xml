@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThemKhachHangActivity"></activity>
         <activity android:name=".KhachHangActivity" />
         <activity android:name=".DangNhapTheActivity" />
         <activity android:name=".TheActivity" />

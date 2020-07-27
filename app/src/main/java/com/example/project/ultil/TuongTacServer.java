@@ -1,6 +1,7 @@
 package com.example.project.ultil;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -23,7 +24,7 @@ public class TuongTacServer {
      * quá trình thực hiện gán các giá trị lần lượt key.get(i) = value.get(i)
      */
     //thêm dữ liệu lên server
-    public static void insert(final Context context, String url, final ArrayList<String> key, final ArrayList<String > value)
+    public static void insert_Or_update(final Context context, String url, final ArrayList<String> key, final ArrayList<String > value)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -50,9 +51,44 @@ public class TuongTacServer {
                 {
                     params.put(key.get(i),value.get(i));
                 }
+
                 return params;
             }
         };
         queue.add(stringRequest);
     }
+
+    /**
+     * Xóa dữ liệu trên server
+     */
+    public static void delete(final Context context, String url, final String key, final String value)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.equals("success"))
+                            Check_Internet_Wifi.showToast_Short(context,"Success!!!");
+                        else
+                            Check_Internet_Wifi.showToast_Short(context, "Fail!!!");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Loi_delete",error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put(key,value);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
 }
