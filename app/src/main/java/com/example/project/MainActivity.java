@@ -90,17 +90,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void xuLyButtonGiaDien() {
+        Intent intentGiaDien = new Intent(MainActivity.this, GiaDienActivity.class);
+        intentGiaDien.putExtra("role",role);
         if(txtXinMoiDangNhap.getText().equals("ĐĂNG NHẬP"))
         {
             startActivityForResult(intent,99);
         }
         else if(role.equals("QL"))
         {
-            Check_Internet_Wifi.showToast_Short(MainActivity.this, "QL");
+            startActivity(intentGiaDien);
         }
         else
         {
-            Check_Internet_Wifi.showToast_Short(MainActivity.this, "KH");
+            startActivity(intentGiaDien);
         }
     }
 
@@ -123,22 +125,26 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(role.equals("QL"))
         {
-            Check_Internet_Wifi.showToast_Short(MainActivity.this, "QL");
+            Intent intentTaiKhoanKH = new Intent(MainActivity.this, UserKHActivity.class);
+            startActivity(intentTaiKhoanKH);
         }
     }
-
     private void xuLyButtonHoaDon() {
+        Intent intentHoaDon = new Intent(MainActivity.this, HoaDonActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("user",user);
+        intentHoaDon.putExtra("Bundle",bundle);
         if(txtXinMoiDangNhap.getText().equals("ĐĂNG NHẬP"))
         {
             startActivityForResult(intent,99);
         }
         else if(role.equals("QL"))
         {
-            Check_Internet_Wifi.showToast_Short(MainActivity.this, "QL");
+            startActivity(intentHoaDon);
         }
         else
         {
-            Check_Internet_Wifi.showToast_Short(MainActivity.this, "KH");
+            startActivity(intentHoaDon);
         }
     }
 

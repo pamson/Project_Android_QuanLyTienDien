@@ -31,7 +31,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class KhachHangActivity extends AppCompatActivity {
 
@@ -67,6 +70,9 @@ public class KhachHangActivity extends AppCompatActivity {
 
 
     private void xuLyThemKhachHang() {
+        final SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+        Calendar calendar = Calendar.getInstance();
+        Date t = calendar.getTime();
         final Dialog dialog = new Dialog(KhachHangActivity.this);
         //không cho tắt hộp thoại đi khi click ra ngoài hộp thoại
         dialog.setCancelable(false);
@@ -79,6 +85,8 @@ public class KhachHangActivity extends AppCompatActivity {
         final EditText txtNhapSDT = (EditText)dialog.findViewById(R.id.txtNhapSDT);
         final EditText txtNhapMaThe = (EditText)dialog.findViewById(R.id.txtNhapMaThe);
         Button btnThemKH = (Button)dialog.findViewById(R.id.btnThemKH);
+
+        txtNhapNgaySinh.setText(date.format(t));
 
         //Dữ liệu trong key
         final ArrayList<String> key = new ArrayList<String>();
@@ -93,25 +101,33 @@ public class KhachHangActivity extends AppCompatActivity {
         btnThemKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Dữ liệu trong value
-                final ArrayList<String> value = new ArrayList<String>();
-                value.add(txtNhapMaKH.getText().toString());
-                value.add(txtNhapTenKH.getText().toString());
-                value.add(txtNhapNgaySinh.getText().toString());
-                value.add(txtNhapEmail.getText().toString());
-                value.add(txtNhapDiaChi.getText().toString());
-                value.add(txtNhapSDT.getText().toString());
-                value.add(txtNhapMaThe.getText().toString());
-                dsKhachHang.add(new KhachHang(txtNhapMaKH.getText().toString(),
-                                              txtNhapTenKH.getText().toString(),
-                                              txtNhapNgaySinh.getText().toString(),
-                                              txtNhapEmail.getText().toString(),
-                                              txtNhapDiaChi.getText().toString(),
-                                              txtNhapSDT.getText().toString(),
-                                              txtNhapMaThe.getText().toString()));
-                khachHangAdapter.notifyDataSetChanged();
-                TuongTacServer.insert_Or_update(KhachHangActivity.this,Server.urlThemKhachHang,key, value);
-                dialog.cancel();
+                String makh = txtNhapMaKH.getText().toString();
+                String tenkh = txtNhapTenKH.getText().toString();
+                String ngaysinh = txtNhapNgaySinh.getText().toString();
+                String email = txtNhapEmail.getText().toString();
+                String diachi =txtNhapDiaChi.getText().toString();
+                String sdt =txtNhapSDT.getText().toString();
+                String mathe =txtNhapMaThe.getText().toString();
+                if(makh.isEmpty() || tenkh.isEmpty() || ngaysinh.isEmpty() || email.isEmpty() || diachi.isEmpty()||sdt.isEmpty()|mathe.isEmpty() )
+                {
+                    Check_Internet_Wifi.showToast_Short(KhachHangActivity.this, "Mời bạn nhập đủ thông tin");
+                }
+                else
+                {
+                    //Dữ liệu trong value
+                    final ArrayList<String> value = new ArrayList<String>();
+                    value.add(makh);
+                    value.add(tenkh);
+                    value.add(ngaysinh);
+                    value.add(email);
+                    value.add(diachi);
+                    value.add(sdt);
+                    value.add(mathe);
+                    dsKhachHang.add(new KhachHang(makh,tenkh,ngaysinh,email,diachi,sdt,mathe));
+                    khachHangAdapter.notifyDataSetChanged();
+                    TuongTacServer.insert_Or_update(KhachHangActivity.this,Server.urlThemKhachHang,key, value);
+                    dialog.cancel();
+                }
             }
         });
         dialog.show();

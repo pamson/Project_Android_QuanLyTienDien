@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/txtNhapMaHD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Mã hóa đơn"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapmakh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Mã khách hàng"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapNgayPhaiThanhToan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ngày phải thanh toán"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/txtNhapChiSoMoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Chỉ số mới"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+
+    <Button
+        android:id="@+id/btnThemHD"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm hóa đơn" />
+</LinearLayout>
