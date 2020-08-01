@@ -1,22 +1,46 @@
 package com.example.project.adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.project.DangNhapTheActivity;
 import com.example.project.R;
+import com.example.project.TheActivity;
+import com.example.project.modle.Card;
 import com.example.project.modle.HoaDon;
+import com.example.project.modle.User;
+import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Server;
+import com.example.project.ultil.TuongTacServer;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HoaDonAdapter extends ArrayAdapter<HoaDon>
 {
@@ -45,7 +69,96 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon>
         addControls(row);
         kiemTraTrangThai(hoaDon);
         setUp(hoaDon);
+        addEvents(hoaDon);
         return row;
+    }
+
+    private void addEvents(final HoaDon hoaDon) {
+        imgShopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xuLyThanhToan(hoaDon);
+            }
+        });
+    }
+
+    private void xuLyThanhToan(HoaDon hoaDon) {
+        final Dialog dialog = new Dialog(context);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dangnhapthedethanhtoan);
+        final EditText txtTenDNThe = (EditText)dialog.findViewById(R.id.txtTenDNThe);
+        final EditText txtMKThe = (EditText)dialog.findViewById(R.id.txtMKThe);
+        Button btnDNThe = (Button)dialog.findViewById(R.id.btnDNThe);
+        //Dữ liệu trong key
+        final ArrayList<String> key = new ArrayList<String>();
+        key.add("mahd");
+        key.add("mathe");
+        //Dữ liệu trong value
+        final ArrayList<String > value = new ArrayList<String>();
+        value.add(hoaDon.getMaHD());
+
+        btnDNThe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user = txtTenDNThe.getText().toString().trim();
+                String pw = txtMKThe.getText().toString().trim();
+                if(user.isEmpty() || pw.isEmpty())
+                {
+                    Check_Internet_Wifi.showToast_Short(context,"Mời bạn nhập đủ thông tin");
+                }
+                else
+                {
+                    RequestQueue queue = Volley.newRequestQueue(context);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.urlLoginCard,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    if(response.equals("[]"))
+                                    {
+                                        Check_Internet_Wifi.showToast_Short(context, "Wrong password or user!!!");
+                                    }
+                                    else
+                                    {
+                                        try {
+                                            JSONArray jsonArray = new JSONArray(response);
+                                            for(int i =0; i <jsonArray.length(); i++)
+                                            {
+                                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                                String mathe = jsonObject.getString("MaThe");
+                                                value.add(mathe);
+                                                TuongTacServer.insert_Or_update(context,Server.urlThanhToan,key,value);
+                                                context.finish();
+                                                dialog.cancel();
+                                            }
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            Log.e("loiJson", e.toString());
+                                        }
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.d("ttt","Loi",error);
+                                }
+                            }
+                    ){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String,String> params = new HashMap<>();
+                            params.put("mathe",txtTenDNThe.getText().toString());
+                            params.put("matkhau",txtMKThe.getText().toString());
+                            return params;
+                        }
+                    };
+                    queue.add(stringRequest);
+                }
+            }
+        });
+
+        dialog.show();
     }
 
     private void setUp(HoaDon hoaDon) {

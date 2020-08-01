@@ -132,12 +132,10 @@ public class HoaDonActivity extends AppCompatActivity {
                     value.add(makh);
                     value.add(ngayphaithanhtoan);
                     value.add(chisomoi);
-                    dsHoaDonChuaThanhToan.clear();
-                    adapterHoaDonChuaThanhToan.notifyDataSetChanged();
-                    //Hiển thị hóa đơn chưa thanh toán
-                    TuongTacServer.hienThiDuLieu_HoaDon_QL(HoaDonActivity.this,Server.urlhoadonchuathanhtoan_quanly,dsHoaDonChuaThanhToan,adapterHoaDonChuaThanhToan);
+
                     TuongTacServer.insert_Or_update(HoaDonActivity.this,Server.urlThemHoaDon,key, value);
-                    dialog.cancel();
+                    finish();
+                    dialog.dismiss();
                 }
 
             }
@@ -151,6 +149,7 @@ public class HoaDonActivity extends AppCompatActivity {
             imgAddHoaDon.setVisibility(View.VISIBLE);
             //Hiển thị hóa đơn đã thanh toán
             TuongTacServer.hienThiDuLieu_HoaDon_QL(HoaDonActivity.this,Server.urlhoadondathanhtoan_quanly,dsHoaDonDaThanhToan,adapterHoaDonDaThanhToan);
+
             //Hiển thị hóa đơn chưa thanh toán
             TuongTacServer.hienThiDuLieu_HoaDon_QL(HoaDonActivity.this,Server.urlhoadonchuathanhtoan_quanly,dsHoaDonChuaThanhToan,adapterHoaDonChuaThanhToan);
         }

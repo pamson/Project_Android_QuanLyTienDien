@@ -9,6 +9,7 @@
     >
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="355dp"
         android:layout_height="75dp"
         android:orientation="horizontal"
@@ -30,8 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/khachhangshape"
-                app:srcCompat="@drawable/customers"
-                />
+                app:srcCompat="@drawable/customers" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -39,9 +39,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Khách hàng"
-                android:textColor="#FFFFFF"
-                />
+                android:textColor="#FFFFFF" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,8 +53,7 @@
                 android:layout_width="72dp"
                 android:layout_height="50dp"
                 android:background="@drawable/khachhangshape"
-                app:srcCompat="@drawable/electricity"
-                />
+                app:srcCompat="@drawable/electricity" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -62,8 +61,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Giá điện"
-                android:textColor="#FFFFFF"
-                />
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
@@ -222,5 +220,52 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.078"
         app:srcCompat="@drawable/lock" />
+
+    <ScrollView
+        android:layout_width="391dp"
+        android:layout_height="527dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+
+        android:scrollbars="none"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView15"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ưu đãi" />
+
+            <fragment
+                android:id="@+id/fragment_uudai"
+                android:name="com.example.project.fragment.FragmentUuDai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_uudai" />
+
+            <fragment
+                android:id="@+id/fragment_QuangCao"
+                android:name="com.example.project.fragment.FragmentQuangCao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:layout="@layout/fragment_quangcao">
+
+            </fragment>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
