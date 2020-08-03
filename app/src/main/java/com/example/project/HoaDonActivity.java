@@ -47,7 +47,7 @@ public class HoaDonActivity extends AppCompatActivity {
     private ArrayList<HoaDon> dsHoaDonDaThanhToan, dsHoaDonChuaThanhToan;
     private HoaDonAdapter adapterHoaDonDaThanhToan, adapterHoaDonChuaThanhToan;
 
-    private ImageView imgAddHoaDon;
+    private ImageView imgAddHoaDon, imgSendSMS;
     private User user;
 
     @Override
@@ -90,6 +90,13 @@ public class HoaDonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 xuLyThemHoaDon();
+            }
+        });
+        imgSendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentSMS = new Intent(HoaDonActivity.this, GuiTinNhanActivity.class);
+                startActivity(intentSMS);
             }
         });
     }
@@ -148,6 +155,7 @@ public class HoaDonActivity extends AppCompatActivity {
         if(user.getRole().equals("QL"))
         {
             imgAddHoaDon.setVisibility(View.VISIBLE);
+            imgSendSMS.setVisibility(View.VISIBLE);
             //Hiển thị hóa đơn đã thanh toán
             TuongTacServer.hienThiDuLieu_HoaDon_QL(HoaDonActivity.this,Server.urlhoadondathanhtoan_quanly,dsHoaDonDaThanhToan,adapterHoaDonDaThanhToan);
 
@@ -157,6 +165,7 @@ public class HoaDonActivity extends AppCompatActivity {
         else
         {
             imgAddHoaDon.setVisibility(View.GONE);
+            imgSendSMS.setVisibility(View.GONE);
             //Hiển thị hóa đơn đã thanh toán
             TuongTacServer.hienThiDuLieu_HoaDon_KH(HoaDonActivity.this,Server.urlhoadondathanhtoan_khachhang,user.getUserID(),dsHoaDonDaThanhToan,adapterHoaDonDaThanhToan);
             //Hiển thị hóa đơn chưa thanh toán
@@ -167,6 +176,7 @@ public class HoaDonActivity extends AppCompatActivity {
         Loading.loading(HoaDonActivity.this);
         txtTuHoaDonVeTrangChu = (TextView)findViewById(R.id.txtTuHoaDonVeTrangChu);
         imgAddHoaDon = (ImageView)findViewById(R.id.imgAddHoaDon);
+        imgSendSMS = (ImageView) findViewById(R.id.imgSendSMS);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("Bundle");

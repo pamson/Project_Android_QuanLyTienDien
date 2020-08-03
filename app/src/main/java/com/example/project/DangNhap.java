@@ -154,6 +154,7 @@ public class DangNhap extends AppCompatActivity {
                                             jsonObject.getString("Role")));
                                     //Đánh dấu kết quả trả về
                                     setResult(100, intent);
+                                    Loading.destroyLoading();
                                     //Phải đóng màn hình này lại
                                     //Để màn hình MainActivity trở thành Foregroud lifetime
                                     // Vì nó chỉ nhận được kết quả trả về ở trong Foregroud lifetime --> bắt đầu onResume()
