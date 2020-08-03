@@ -39,9 +39,15 @@ public class TuongTacServer {
                     @Override
                     public void onResponse(String response) {
                         if(response.equals("success"))
+                        {
                             Check_Internet_Wifi.showToast_Short(context,"Success!!!");
+                            Loading.destroyLoading();
+                        }
                         else
+                        {
                             Check_Internet_Wifi.showToast_Short(context, "Fail!!!");
+                            Loading.destroyLoading();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -76,9 +82,21 @@ public class TuongTacServer {
                     @Override
                     public void onResponse(String response) {
                         if(response.equals("success"))
+                        {
                             Check_Internet_Wifi.showToast_Short(context,"Success!!!");
+                            Loading.destroyLoading();
+                        }
+                        else if (response.equals("PasswordFail"))
+                        {
+                            Check_Internet_Wifi.showToast_Short(context,"Mật khẩu cũ của bạn nhập đã bị sai");
+                            Loading.destroyLoading();
+
+                        }
                         else
+                        {
                             Check_Internet_Wifi.showToast_Short(context, "Fail!!!");
+                            Loading.destroyLoading();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -128,6 +146,7 @@ public class TuongTacServer {
                                 int tongTien = jsonObject.getInt("TongTien");
                                 ds.add(new HoaDon(maHD,maKH,ngayPhaiThanhToan,ngayThanhToan,chiSoCu,chiSoMoi,soKwh,soTienKwh,tongTien,trangThai));
                                 adapter.notifyDataSetChanged();
+                                Loading.destroyLoading();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -174,6 +193,7 @@ public class TuongTacServer {
                                 int tongTien = jsonObject.getInt("TongTien");
                                 ds.add(new HoaDon(maHD,maKH,ngayPhaiThanhToan,ngayThanhToan,chiSoCu,chiSoMoi,soKwh,soTienKwh,tongTien,trangThai));
                                 adapter.notifyDataSetChanged();
+                                Loading.destroyLoading();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

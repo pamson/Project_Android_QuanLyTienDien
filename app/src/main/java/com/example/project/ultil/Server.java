@@ -19,4 +19,5 @@ public class Server
     public static String urlThemHoaDon = "https://baitapcnw.000webhostapp.com/Server/themhoadon.php";
     public static String urlQuangCao = "https://baitapcnw.000webhostapp.com/Server/quangcao.php";
     public static String urlUuDai = "https://baitapcnw.000webhostapp.com/Server/uudai.php";
+    public static String urlDoiMK = "https://baitapcnw.000webhostapp.com/Server/doiMK.php";
 }

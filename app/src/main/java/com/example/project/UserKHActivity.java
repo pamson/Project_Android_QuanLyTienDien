@@ -17,6 +17,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.project.adapter.UserAdapter;
 import com.example.project.modle.User;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 
 import org.json.JSONArray;
@@ -65,6 +66,7 @@ public class UserKHActivity extends AppCompatActivity {
                                 String Role = jsonObject.getString("Role");
                                 dsUser.add(new User(userID,passWord,Name, Role));
                                 userAdapter.notifyDataSetChanged();
+                                Loading.destroyLoading();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -82,6 +84,7 @@ public class UserKHActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        Loading.loading(UserKHActivity.this);
         txtTuTaiKhoanKhachHangVeTrangChu = (TextView) findViewById(R.id.txtTuTaiKhoanKhachHangVeTrangChu);
         lvTaiKhoanKhachHang = (ListView)findViewById(R.id.lvTaiKhoanKhachHang);
         dsUser = new ArrayList<User>();

@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 import com.example.project.ultil.TuongTacServer;
 
@@ -73,6 +74,7 @@ public class GiaDienActivity extends AppCompatActivity {
         btnSuaGiaDien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Loading.loading(GiaDienActivity.this);
                 ArrayList<String > value = new ArrayList<String >();
                 value.add(tienDien[0]+"");
                 value.add(giaDien.getText().toString());
@@ -97,6 +99,7 @@ public class GiaDienActivity extends AppCompatActivity {
                                 int soTien = jsonObject.getInt("SoKwh");
                                 txtSoTien.setText(soTien + " VND");
                                 tienDien[0] = soTien;
+                                Loading.destroyLoading();
 
 
                             } catch (JSONException e) {
@@ -116,6 +119,7 @@ public class GiaDienActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        Loading.loading(GiaDienActivity.this);
         txtTuGiaDienVeTrangChu = (TextView)findViewById(R.id.txtTuGiaDienVeTrangChu);
         txtSoTien = (TextView)findViewById(R.id.txtSoTien);
         imgSuaSoTien = (ImageView)findViewById(R.id.imgSuaSoTien);

@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.project.R;
 import com.example.project.adapter.QuangCaoAdapter;
 import com.example.project.modle.QuangCao;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 
 import org.json.JSONArray;

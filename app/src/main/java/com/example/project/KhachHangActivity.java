@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.project.adapter.KhachHangAdapter;
 import com.example.project.modle.KhachHang;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 import com.example.project.ultil.TuongTacServer;
 
@@ -101,6 +102,7 @@ public class KhachHangActivity extends AppCompatActivity {
         btnThemKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Loading.loading(KhachHangActivity.this);
                 String makh = txtNhapMaKH.getText().toString();
                 String tenkh = txtNhapTenKH.getText().toString();
                 String ngaysinh = txtNhapNgaySinh.getText().toString();
@@ -111,6 +113,7 @@ public class KhachHangActivity extends AppCompatActivity {
                 if(makh.isEmpty() || tenkh.isEmpty() || ngaysinh.isEmpty() || email.isEmpty() || diachi.isEmpty()||sdt.isEmpty()|mathe.isEmpty() )
                 {
                     Check_Internet_Wifi.showToast_Short(KhachHangActivity.this, "Mời bạn nhập đủ thông tin");
+                    Loading.destroyLoading();
                 }
                 else
                 {
@@ -153,6 +156,7 @@ public class KhachHangActivity extends AppCompatActivity {
                                 String maThe = jsonObject.getString("MaThe");
                                 dsKhachHang.add(new KhachHang(maKH,tenKH,ngaySinh,email,diaChi,sdt,maThe));
                                 khachHangAdapter.notifyDataSetChanged();
+                                Loading.destroyLoading();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -171,6 +175,7 @@ public class KhachHangActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        Loading.loading(KhachHangActivity.this);
         txtTuKhachHangVeTrangChu =(TextView)findViewById(R.id.txtTuKhachHangVeTrangChu);
         imgAddKhachHang = (ImageView)findViewById(R.id.imgAddKhachHang);
 

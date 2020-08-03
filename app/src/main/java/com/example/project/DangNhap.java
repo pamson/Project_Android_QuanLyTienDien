@@ -24,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.project.modle.User;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 
 import org.json.JSONArray;
@@ -36,7 +37,7 @@ import java.util.Map;
 
 public class DangNhap extends AppCompatActivity {
 
-    private TextView txtDangKy;
+    private TextView txtDangKy,txtDoiMK;
     private EditText txtTenDangNhap, txtMatKhau;
     private Button btnDangNhap;
     private CheckBox ckh_eye;
@@ -78,6 +79,13 @@ public class DangNhap extends AppCompatActivity {
                 Check_Internet_Wifi.showToast_Short(DangNhap.this, "Chào mừng bạn đến với iPson");
             }
         });
+        txtDoiMK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentDoiMK = new Intent(DangNhap.this,DoiMatKhauActivity.class);
+                startActivity(intentDoiMK);
+            }
+        });
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +99,7 @@ public class DangNhap extends AppCompatActivity {
                     }
                     else
                     {
+                        Loading.loading(DangNhap.this);
                         loginUser();
                     }
                 }
@@ -128,6 +137,7 @@ public class DangNhap extends AppCompatActivity {
                         if(response.equals("[]"))
                         {
                             Check_Internet_Wifi.showToast_Short(DangNhap.this, "Wrong Password or User");
+                            Loading.destroyLoading();
                         }
                         else
                         {
@@ -176,6 +186,7 @@ public class DangNhap extends AppCompatActivity {
 
     private void addControls() {
         txtDangKy = (TextView)findViewById(R.id.txtDangKy);
+        txtDoiMK = (TextView) findViewById(R.id.txtDoiMK);
 
         txtTenDangNhap = (EditText)findViewById(R.id.txtTenDangNhap);
         txtMatKhau = (EditText)findViewById(R.id.txtMatKhau);

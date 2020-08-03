@@ -20,6 +20,7 @@ import com.example.project.KhachHangActivity;
 import com.example.project.R;
 import com.example.project.modle.KhachHang;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 import com.example.project.ultil.TuongTacServer;
 
@@ -58,6 +59,7 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang>
         imgDeleteKhachHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Loading.loading(context);
                 String keyMaKH = "maKH";
                 String valueMaKH = khachHang.getMaKH();
                 TuongTacServer.delete(context, Server.urlXoaKhachHang,keyMaKH,valueMaKH);
@@ -109,6 +111,7 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang>
         btnSuaKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Loading.loading(context);
                 //Dữ liệu trong value
                 final ArrayList<String> value = new ArrayList<String>();
                 value.add(khachHang.getMaKH());

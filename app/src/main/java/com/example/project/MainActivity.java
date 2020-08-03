@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.project.modle.User;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txtXinMoiDangNhap;
@@ -159,4 +160,5 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intentKhachHang);
         }
     }
+
 }

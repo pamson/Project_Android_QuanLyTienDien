@@ -29,7 +29,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng nhập vào iPSon"
+        android:text="Đổi mật khẩu"
         android:textColor="#FFFFFF"
         android:textSize="22dp"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <EditText
-        android:id="@+id/txtTenDangNhap"
+        android:id="@+id/txtTenDangNhapDoiMK"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -57,11 +57,11 @@
         app:layout_constraintVertical_bias="0.077" />
 
     <EditText
-        android:id="@+id/txtMatKhau"
+        android:id="@+id/txtMatKhauCu"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Mật khẩu"
+        android:hint="Mật khẩu cũ"
         android:inputType="textPassword"
         android:textColor="#B6B2B2"
         android:textStyle="bold"
@@ -70,41 +70,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTenDangNhap"
+        app:layout_constraintTop_toBottomOf="@+id/txtTenDangNhapDoiMK"
         app:layout_constraintVertical_bias="0.059" />
 
-    <Button
-        android:id="@+id/btnDangNhap"
+    <EditText
+        android:id="@+id/txtMatKhauMoi"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:text="ĐĂNG NHẬP"
-        android:background="@drawable/dangnhapshape"
-        android:textColor="#0C2C7C"
+        android:ems="10"
+        android:hint="Mật khẩu mới"
+        android:inputType="textPassword"
+        android:textColor="#B6B2B2"
+        android:textColorHint="#B6B2B2"
         android:textStyle="bold"
-        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMatKhau"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMatKhauCu"
+        app:layout_constraintVertical_bias="0.06" />
 
-    <TextView
-        android:id="@+id/txtDoiMK"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnDoiMK"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:text="Bạn có muốn đổi mật khẩu??"
-        android:textColor="#FFFFFF"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/g1"
+        android:background="@drawable/dangnhapshape"
+        android:text="ĐỔI MẬT KHẨU"
+        android:textColor="#0C2C7C"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDangNhap"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598" />
+
 
     <CheckBox
-        android:id="@+id/ckh_eye"
+        android:id="@+id/ckh_eyeMKCu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/eye"
@@ -115,6 +119,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.374" />
+
+    <CheckBox
+        android:id="@+id/ckh_eyeMKMoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/eye"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.465" />
 
     <TextView
         android:id="@+id/txtDangKy"

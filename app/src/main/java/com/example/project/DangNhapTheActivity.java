@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.project.modle.Card;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 
 import org.json.JSONArray;
@@ -85,6 +86,7 @@ public class DangNhapTheActivity extends AppCompatActivity {
         btnDangNhapThe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Loading.loading(DangNhapTheActivity.this);
                 if(Check_Internet_Wifi.haveNetworkConnection(DangNhapTheActivity.this))
                 {
                     String userName = txtMatKhauThe.getText().toString().trim();
@@ -92,6 +94,7 @@ public class DangNhapTheActivity extends AppCompatActivity {
                     if(userName.isEmpty() || pass.isEmpty())
                     {
                         Check_Internet_Wifi.showToast_Short(DangNhapTheActivity.this,"Mời bạn nhập đủ thông tin");
+                        Loading.destroyLoading();
                     }
                     else
                     {

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HoaDonActivity"></activity>
+        <activity android:name=".DoiMatKhauActivity"></activity>
+        <activity android:name=".HoaDonActivity" />
         <activity android:name=".GiaDienActivity" />
         <activity android:name=".UserKHActivity" />
         <activity android:name=".KhachHangActivity" />

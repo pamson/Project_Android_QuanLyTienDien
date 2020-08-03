@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.project.R;
 import com.example.project.adapter.UuDaiAdapter;
 import com.example.project.modle.UuDai;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 
 import org.json.JSONArray;
@@ -65,6 +66,7 @@ public class FragmentUuDai extends Fragment
                                 String noiDung = jsonObject.getString("NoiDung");
                                 dsUuDai.add(new UuDai(id,imgUuDai,noiDung));
                                 uuDaiAdapter.notifyDataSetChanged();
+                                Loading.destroyLoading();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -83,6 +85,7 @@ public class FragmentUuDai extends Fragment
     }
 
     private void addControls() {
+        Loading.loading(getActivity());
         rcvUuDai = (RecyclerView)view.findViewById(R.id.rcvUuDai);
         //Giúp tối ưu hóa dữ liệu để không ảnh hưởng bởi nội dung trong adapter
         rcvUuDai.setHasFixedSize(true);

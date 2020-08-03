@@ -31,6 +31,7 @@ import com.example.project.modle.Card;
 import com.example.project.modle.HoaDon;
 import com.example.project.modle.User;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 import com.example.project.ultil.TuongTacServer;
 

@@ -25,6 +25,7 @@ import com.example.project.adapter.HoaDonAdapter;
 import com.example.project.modle.HoaDon;
 import com.example.project.modle.User;
 import com.example.project.ultil.Check_Internet_Wifi;
+import com.example.project.ultil.Loading;
 import com.example.project.ultil.Server;
 import com.example.project.ultil.TuongTacServer;
 
@@ -135,7 +136,7 @@ public class HoaDonActivity extends AppCompatActivity {
 
                     TuongTacServer.insert_Or_update(HoaDonActivity.this,Server.urlThemHoaDon,key, value);
                     finish();
-                    dialog.dismiss();
+                    dialog.cancel();
                 }
 
             }
@@ -163,6 +164,7 @@ public class HoaDonActivity extends AppCompatActivity {
         }
     }
     private void addControls() {
+        Loading.loading(HoaDonActivity.this);
         txtTuHoaDonVeTrangChu = (TextView)findViewById(R.id.txtTuHoaDonVeTrangChu);
         imgAddHoaDon = (ImageView)findViewById(R.id.imgAddHoaDon);
 
