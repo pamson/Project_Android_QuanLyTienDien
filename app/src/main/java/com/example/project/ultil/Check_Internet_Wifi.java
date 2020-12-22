@@ -17,6 +17,7 @@ public class Check_Internet_Wifi
         //getSystemService là lấy dich vụ từ màn hình nào đó phải truyền màn hình muốn lấy SERVICE này
         //ConnectivityManager là một lớp quản lý các kết nối
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        //trả về dịch vụ internet của thiể bị
         NetworkInfo[] netInfo = cm.getAllNetworkInfo();
         for (NetworkInfo ni : netInfo) {
             if (ni.getTypeName().equalsIgnoreCase("WIFI"))

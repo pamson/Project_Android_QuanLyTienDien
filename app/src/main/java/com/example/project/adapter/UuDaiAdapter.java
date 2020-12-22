@@ -42,7 +42,7 @@ public class UuDaiAdapter extends RecyclerView.Adapter<UuDaiAdapter.ViewHolder>
         return new ViewHolder(itemView);
     }
 
-    /**
+    /**8
      * Gán dữ liệu vào các UI
      * @param holder
      * @param position

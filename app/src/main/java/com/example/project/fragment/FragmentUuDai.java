@@ -50,7 +50,6 @@ public class FragmentUuDai extends Fragment
         layDuLieuTuServerVe();
         return view;
     }
-
     private void layDuLieuTuServerVe() {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, Server.urlUuDai, null,
